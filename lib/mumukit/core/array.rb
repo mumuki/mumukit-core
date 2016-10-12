@@ -7,6 +7,10 @@ class Array
     end
   end
 
+  def to_h
+    Hash[self]
+  end
+
   def to_csv
     CSV.generate do |csv|
       each { |hash| csv << hash.values }
