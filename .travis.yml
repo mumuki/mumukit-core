@@ -11,3 +11,5 @@ deploy:
   on:
     tags: true
     repo: mumuki/mumukit-core
+after_success:
+  - bundle exec codeclimate-test-reporter
