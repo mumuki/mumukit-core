@@ -7,8 +7,13 @@ class Object
     to_h.stringify_keys
   end
 
-  def defaulting(value, &block)
-    try(&block) || value
+  def defaulting(value)
+    if block_given? && !nil?
+      result = yield self
+    else
+      result = self
+    end
+    result || value
   end
 
   def struct(hash = {})
