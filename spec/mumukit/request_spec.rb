@@ -9,6 +9,9 @@ describe Rack::Request do
   it { expect(rack_request.first_subdomain_after('bar.baz.com')).to eq 'foo' }
   it { expect(rack_request.first_subdomain_after('foo.bar.baz.com')).to be nil }
 
+  it { expect(rack_request.subdomain_after('baz.com')).to eq 'foo.bar' }
+  it { expect(rack_request.subdomain_after('bar.baz.com')).to eq 'foo' }
+
   it { expect(rack_request.empty_subdomain_after?('bar.baz.com')).to be false }
   it { expect(rack_request.empty_subdomain_after?('foo.bar.baz.com')).to be true }
 end
