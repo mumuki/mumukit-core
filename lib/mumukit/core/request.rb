@@ -16,7 +16,8 @@ module Mumukit::Core
     end
 
     def subdomain_after(domain)
-      subdomain_parts_after(domain).join('.')
+      parts = subdomain_parts_after(domain)
+      parts.join('.') unless parts.empty?
     end
 
     def empty_subdomain_after?(domain)
