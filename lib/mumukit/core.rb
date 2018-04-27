@@ -6,6 +6,7 @@ module Mumukit
   end
 end
 
+require_relative './core/status'
 require_relative './core/object'
 require_relative './core/module'
 require_relative './core/json'
