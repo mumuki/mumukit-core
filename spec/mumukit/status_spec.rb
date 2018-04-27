@@ -10,6 +10,9 @@ describe 'status tests' do
   it { expect('failed').to be_failed }
   it { expect(:failed).to be_failed }
 
+  it { expect(:aborted).to be_aborted }
+  it { expect(:passed_with_warnings).to be_passed_with_warnings }
+
   it { expect('errored').to be_errored }
   it { expect(:errored).to be_errored }
 
