@@ -13,8 +13,8 @@ class TestClass
 end
 
 class TestClass
-  patch :patch_me do |some_param, some_other_param, ultra|
-    ultra.call(some_param) + "some_other_param: #{some_other_param}"
+  patch :patch_me do |some_param, some_other_param, hyper|
+    hyper.call(some_param) + "some_other_param: #{some_other_param}"
   end
 end
 
