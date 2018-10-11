@@ -19,4 +19,8 @@ class Object
   def struct(hash = {})
     hash.to_struct
   end
+
+  def like?(other)
+    to_s == other.to_s
+  end
 end
