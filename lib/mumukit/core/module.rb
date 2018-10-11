@@ -5,4 +5,12 @@ class Module
       raise message
     end
   end
+
+  def patch(method_name, &block)
+    method_proc = instance_method method_name
+
+    define_method method_name do |*args|
+      block.call(*args, method_proc.bind(self))
+    end
+  end
 end
