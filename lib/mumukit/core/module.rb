@@ -10,7 +10,7 @@ class Module
     method_proc = instance_method method_name
 
     define_method method_name do |*args|
-      block.call(*args, method_proc.bind(self))
+      instance_exec(*args, method_proc.bind(self), &block)
     end
   end
 end
