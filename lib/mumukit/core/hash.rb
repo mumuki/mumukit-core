@@ -1,3 +1,5 @@
+require 'set'
+
 class Hash
   def dig(key, *keys)
     value = self[key]
@@ -14,5 +16,11 @@ class Hash
 
   def amend(other)
     other.merge(self)
+  end
+
+  def diff(other)
+    s1 = Set.new(self)
+    s2 = Set.new(other)
+    { deletions: (s1 - s2).to_h, additions: (s2 - s1).to_h }
   end
 end
