@@ -31,8 +31,8 @@
       failure_message(&message)
       failure_message_when_negated(&message)
     else
-      failure_message_for_should(&:message)
-      failure_message_for_should_not(&:message)
+      failure_message_for_should(&message)
+      failure_message_for_should_not(&message)
     end
   end
 
