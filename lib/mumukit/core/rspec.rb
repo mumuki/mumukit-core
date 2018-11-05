@@ -14,9 +14,17 @@
     end
 
     message = proc do |actual|
+      expected_hash = as_matcher_json(expected, options)
+      actual_hash = as_matcher_json(actual, options)
+      diff = expected_hash.diff(actual_hash)
       <<-EOS
-      expected: #{as_matcher_json(expected, options)} (#{expected.class})
-           got: #{as_matcher_json(actual, options)} (#{actual.class})
+      expected: #{expected_hash} (#{expected.class})
+           got: #{actual_hash} (#{actual.class})
+          diff:
+            deletions:
+              #{diff[:deletions]}
+            additions:
+              #{diff[:additions]}
       EOS
     end
 
