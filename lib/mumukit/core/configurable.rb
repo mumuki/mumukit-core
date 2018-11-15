@@ -10,7 +10,7 @@ module Mumukit::Core
     end
 
     def config
-      @config ||= defaults
+      @config ||= defaults.dup
     end
 
     def defaults
