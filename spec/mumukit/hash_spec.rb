@@ -54,8 +54,11 @@ describe Hash do
                                                                    additions: {foo: {baz: 3, bax: 8}} }
     it { expect({foo: [4, 5]}.deep_diff({foo: [6, 5]})).to eq deletions: {foo: [4]},
                                                               additions: {foo: [6]} }
-    it { expect({foo: [{}, 5]}.deep_diff({foo: [{}, 5]})).to eq deletions: {},
-                                                                additions: {} }
+    it { expect({foo: [{}, 5]}.deep_diff({foo: [{}, 5]})).to eq deletions: {}, additions: {} }
+
+    it { expect({elements: []}.deep_diff({elements: ['foo', 'bar']})).to eq deletions: {elements: []}, additions: {elements: ['foo', 'bar']} }
+    it { expect({elements: ['foo', 'bar']}.deep_diff({elements: []})).to eq deletions: {elements: ['foo', 'bar']}, additions: {elements: []} }
+
     it { expect({foo: [{bar: 4}, 5]}.deep_diff({foo: [{bar: 5}, 5]})).to eq deletions: {foo: [{bar: 4}]},
                                                                             additions: {foo: [{bar: 5}]}}
     it { expect({foo: [{bar: 4, bax: 9}, 5]}.deep_diff({foo: [{bar: 5, bax: 9}, 5]})).to eq deletions: {foo: [{bar: 4}]},

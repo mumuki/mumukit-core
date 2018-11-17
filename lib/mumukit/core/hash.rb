@@ -45,18 +45,23 @@ class Hash
       added_v = diff[:additions][k]
       next if !diff[:additions].include?(k) || v.class != added_v.class
       if Array === v
-        values = v.zip(added_v)
-        deep_deletions[k] = []
-        deep_additions[k] = []
-        values.select { |v1, v2| v1 != v2 }.each do |v1, v2|
-          if Hash === v1 && Hash === v2
-            sub_diff = v1.deep_diff(v2)
-            deep_deletions[k] << sub_diff[:deletions]
-            deep_additions[k] << sub_diff[:additions]
-          else
-            deep_deletions[k] << v1
-            deep_additions[k] << v2
+        if v.size == added_v.size
+          values = v.zip(added_v)
+          deep_deletions[k] = []
+          deep_additions[k] = []
+          values.select { |v1, v2| v1 != v2 }.each do |v1, v2|
+            if Hash === v1 && Hash === v2
+              sub_diff = v1.deep_diff(v2)
+              deep_deletions[k] << sub_diff[:deletions]
+              deep_additions[k] << sub_diff[:additions]
+            else
+              deep_deletions[k] << v1
+              deep_additions[k] << v2
+            end
           end
+        else
+          deep_deletions[k] = v - added_v
+          deep_additions[k] = added_v - v
         end
       elsif Hash === v
         sub_diff = v.deep_diff(added_v)
