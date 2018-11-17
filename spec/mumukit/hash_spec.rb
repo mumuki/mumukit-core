@@ -1,6 +1,26 @@
 require_relative '../spec_helper'
 
 describe Hash do
+  describe '#replace_key' do
+    it { expect({foo: 3, bar: 6}.replace_key(:foo, :foobar)).to json_eq foobar: 3, bar: 6 }
+    it { expect({foo: 3, bar: 6}.replace_key(:foobar, :baz)).to json_eq foo: 3, bar: 6 }
+    it 'has no effect' do
+      original = {foo: 3, bar: 6}
+      original.replace_key(:foo, :foobar)
+      expect(original).to json_eq foo: 3, bar: 6
+    end
+  end
+
+  describe '#replace_key!' do
+    it { expect({foo: 3, bar: 6}.replace_key!(:foo, :foobar)).to json_eq foobar: 3, bar: 6 }
+    it { expect({foo: 3, bar: 6}.replace_key!(:foobar, :baz)).to json_eq foo: 3, bar: 6 }
+    it 'has effect' do
+      original = {foo: 3, bar: 6}
+      original.replace_key!(:foo, :foobar)
+      expect(original).to json_eq foobar: 3, bar: 6
+    end
+  end
+
   describe '#dig' do
     it { expect({}.dig(:foo, :bar)).to eq nil }
     it { expect({foo: {}}.dig(:foo, :bar)).to eq nil }
