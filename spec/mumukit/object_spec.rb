@@ -30,4 +30,15 @@ describe Object do
     it { expect('2'.like? :hello).to be false }
     it { expect('2'.like? 'hello').to be false }
   end
+
+  describe '#as_module' do
+    it { expect('Integer'.as_module).to eq Integer }
+    it { expect(:Integer.as_module).to eq Integer }
+    it { expect(:integer.as_module).to eq Integer }
+    it { expect(Integer.as_module).to eq Integer }
+
+    it { expect('Mumukit::Core'.as_module).to eq Mumukit::Core }
+    it { expect('mumukit/core'.as_module).to eq Mumukit::Core }
+    it { expect(Mumukit::Core.as_module).to eq Mumukit::Core }
+  end
 end
