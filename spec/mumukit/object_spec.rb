@@ -37,6 +37,11 @@ describe Object do
     it { expect(:integer.as_module_name).to eq 'Integer' }
     it { expect(Integer.as_module_name).to eq 'Integer' }
 
+    it { expect('Integer'.as_variable_name).to eq 'integer' }
+    it { expect(:Integer.as_variable_name).to eq 'integer' }
+    it { expect(:integer.as_variable_name).to eq 'integer' }
+    it { expect(Integer.as_variable_name).to eq 'integer' }
+
     it { expect('Integer'.as_module).to eq Integer }
     it { expect(:Integer.as_module).to eq Integer }
     it { expect(:integer.as_module).to eq Integer }
