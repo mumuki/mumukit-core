@@ -6,10 +6,6 @@ class String
   def as_module_name
     camelcase
   end
-
-  def as_variable_name
-    underscore
-  end
 end
 
 class Symbol
@@ -20,10 +16,6 @@ class Symbol
   def as_module_name
     to_s.as_module_name
   end
-
-  def as_variable_name
-    to_s.underscore
-  end
 end
 
 class Module
@@ -33,9 +25,5 @@ class Module
 
   def as_module_name
     name
-  end
-
-  def as_variable_name
-    name.as_variable_name
   end
 end
