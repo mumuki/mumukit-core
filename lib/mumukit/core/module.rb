@@ -30,12 +30,13 @@ class Module
   #
   # `revamp` should be prefered to `patch` when more control or performance
   # is required
-  def revamp(*selectors, &block)
+  def revamp(*selectors, selector_transformer: nil, &block)
     selectors.each do |selector|
       method_proc = instance_method selector
+      selector_transfom = selector_transformer ? selector_transformer.call(selector) : selector
 
       define_method selector do |*args|
-        block.call(selector, self, *args, method_proc.bind(self))
+        block.call(selector_transfom, self, *args, method_proc.bind(self))
       end
     end
   end
@@ -83,8 +84,7 @@ class Module
   # ```
   #
   def cache_accessor(*selectors)
-    revamp(*selectors) do |selector, this, hyper|
-      attr_name = "@__#{selector}__"
+    revamp(*selectors, selector_transformer: proc { |it| "@__#{it}__".to_sym }) do |attr_name, this, hyper|
       this.instance_variable_get(attr_name) || this.instance_variable_set(attr_name, hyper.call)
     end
   end
