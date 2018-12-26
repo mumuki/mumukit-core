@@ -64,6 +64,24 @@ class Module
     end
   end
 
+  # Caches an accessor, using the idiom `@__foo__ ||= foo`. For example, the following code:
+  #
+  # ```
+  # def foo
+  #   @__foo__ ||= #...implementation...
+  # end
+  # ```
+  #
+  # Can be turned into:
+  #
+  # ```
+  # def foo
+  #   #...implementation...
+  # end
+  #
+  # cache_accessor :foo
+  # ```
+  #
   def cache_accessor(*selectors)
     revamp(*selectors) do |selector, this, hyper|
       attr_name = "@__#{selector}__"
