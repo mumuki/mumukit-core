@@ -1,14 +1,14 @@
-[![Build Status](https://travis-ci.org/mumuki/mumukit-core.svg?branch=master)](https://travis-ci.org/mumuki/mumukit-core)
-[![Code Climate](https://codeclimate.com/github/mumuki/mumukit-core/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumukit-core)
-[![Test Coverage](https://codeclimate.com/github/mumuki/mumukit-core/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumukit-core)
-[![Issue Count](https://codeclimate.com/github/mumuki/mumukit-core/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/mumukit-core)
+[![Build Status](https://travis-ci.org/mumuki/patch_adams.svg?branch=master)](https://travis-ci.org/mumuki/patch_adams)
+[![Code Climate](https://codeclimate.com/github/mumuki/patch_adams/badges/gpa.svg)](https://codeclimate.com/github/mumuki/patch_adams)
+[![Test Coverage](https://codeclimate.com/github/mumuki/patch_adams/badges/coverage.svg)](https://codeclimate.com/github/mumuki/patch_adams)
+[![Issue Count](https://codeclimate.com/github/mumuki/patch_adams/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/patch_adams)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mumukit-core'
+gem 'patch_adams'
 ```
 
 And then execute:
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mumukit-core
+    $ gem install patch_adams
 
 
 ## Development
@@ -28,7 +28,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mumukit-core. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/patch_adams. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

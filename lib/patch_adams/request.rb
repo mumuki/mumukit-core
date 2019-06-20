@@ -1,7 +1,7 @@
 require 'rack'
 require 'rack/request'
 
-module Mumukit::Core
+module PatchAdams
   module Subdominated
     def first_subdomain_after(domain)
       subdomain_parts_after(domain)&.first
@@ -28,6 +28,6 @@ end
 
 module Rack
   class Request
-    include Mumukit::Core::Subdominated
+    include PatchAdams::Subdominated
   end
 end

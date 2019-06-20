@@ -47,8 +47,9 @@ describe Object do
     it { expect(:integer.as_module).to eq Integer }
     it { expect(Integer.as_module).to eq Integer }
 
-    it { expect('Mumukit::Core'.as_module).to eq Mumukit::Core }
-    it { expect('mumukit/core'.as_module).to eq Mumukit::Core }
-    it { expect(Mumukit::Core.as_module).to eq Mumukit::Core }
+    it { expect('PatchAdams'.as_module).to eq PatchAdams }
+    it { expect('patch_adams'.as_module).to eq PatchAdams }
+    it { expect('patch_adams/configurable'.as_module).to eq PatchAdams::Configurable }
+    it { expect(PatchAdams.as_module).to eq PatchAdams }
   end
 end

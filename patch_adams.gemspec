@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mumukit/core/version'
+require 'patch_adams/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'mumukit-core'
-  spec.version       = Mumukit::Core::VERSION
+  spec.name          = 'patch_adams'
+  spec.version       = PatchAdams::VERSION
   spec.authors       = ['Franco Leonardo Bulgarelli']
   spec.email         = ['franco@mumuki.org']
 
-  spec.summary       = 'Ruby core extensions for mumuki on top of active support'
+  spec.summary       = "Ruby monkey patches to increase your code's health and your own happines"
   spec.description   = 'Ruby core extensions'
-  spec.homepage      = 'https://github.com/mumuki/mumukit-core'
+  spec.homepage      = 'https://github.com/mumuki/patch_adams'
   spec.license       = 'MIT'
 
   spec.files         = Dir['lib/**/*', 'bin/**/*']

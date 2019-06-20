@@ -1,4 +1,4 @@
-module Mumukit::Core
+module PatchAdams
   module Configurable
     def configure
       yield config
