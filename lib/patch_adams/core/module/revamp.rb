@@ -1,11 +1,4 @@
 class Module
-  def required(name, message=nil)
-    message ||= "You need to implement method #{name}"
-    define_method name do |*|
-      raise message
-    end
-  end
-
   # Redefines a previous definition of the given method.
   # It takes a block with the original arguments and the `hyper`
   # reference to the original definition

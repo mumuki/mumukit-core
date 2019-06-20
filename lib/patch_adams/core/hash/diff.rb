@@ -1,43 +1,6 @@
 require 'set'
 
 class Hash
-  unless instance_methods.include?(:dig)
-    def dig(key, *keys)
-      value = self[key]
-      if !value.nil? && !keys.empty?
-        value.dig(*keys)
-      else
-        value
-      end
-    end
-  end
-
-  def indifferent_delete(key)
-    string_value = delete(key.to_s)
-    delete(key.to_sym) || string_value
-  end
-
-  def indifferent_get(key)
-    self[key.to_sym] || self[key.to_s]
-  end
-
-  def replace_key(original, replacement)
-    dup.replace_key! original, replacement
-  end
-
-  def replace_key!(original, replacement)
-    self[replacement] = delete(original) if include?(original)
-    self
-  end
-
-  def to_struct
-    OpenStruct.new self
-  end
-
-  def amend(other)
-    other.merge(self)
-  end
-
   def diff(other)
     s1 = Set.new(self)
     s2 = Set.new(other)
