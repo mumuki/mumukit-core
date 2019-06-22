@@ -95,6 +95,24 @@ require `patch_adams/minimal`
 require 'patch_adams/rack/request/subdominated'
 ```
 
+#### I18n
+
+> :warning: You need to add `i18n ~> 0.7` to your dependencies first
+
+If you want to require the whole `i18n` patches:
+
+```ruby
+require 'patch_adams/i18n'
+```
+
+If you want to cherry-pick specific `i18n` patches instead, require `patch_adams/minimal` and only those you need:
+
+```ruby
+require `patch_adams/minimal`
+require 'patch_adams/i18n/load_translations_path'
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

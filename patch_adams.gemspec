@@ -24,8 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'activemodel', '>= 4.1'
+  spec.add_development_dependency 'rack', '>= 1.5'
+  spec.add_development_dependency 'i18n', '~> 0.7'
 
   spec.add_dependency 'activesupport', '>= 4.1'
-  spec.add_dependency 'rack', '>= 1.5'
-  spec.add_dependency 'i18n', '~> 0.7'
 end
