@@ -3,6 +3,10 @@
 [![Test Coverage](https://codeclimate.com/github/mumuki/patch_adams/badges/coverage.svg)](https://codeclimate.com/github/mumuki/patch_adams)
 [![Issue Count](https://codeclimate.com/github/mumuki/patch_adams/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/patch_adams)
 
+# `patch_adams`
+
+> Ruby monkey patches to increase your code's health and your own happines
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -168,9 +172,30 @@ Don't you remember if a given object is a symbol, class or string? Are you deali
 => true
 ```
 
-#### `status`
+#### `status?`
 
-TODO
+`PatchAdams.define_status` allows you to declare global status-like matchers for strings and symbols:
+
+```ruby
+# Somewhere in your program startup-code
+PatchAdams.define_status :passed, :failed?
+
+# Then...
+> PatchAdams::STATUSES
+=> [:passed, :failed]
+
+> :passed.passed?
+=> true
+
+> :foo.passed?
+=> false
+
+> nil.failed?
+=> false
+
+> 'failed'.failed?
+=> true
+```
 
 #### `to_struct`
 
