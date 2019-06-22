@@ -132,11 +132,61 @@ TODO
 
 TODO
 
+
+#### `attempt`
+
+> Cherry-picking `require 'patch_adams/core/attempt`
+
+`attempt` generalizes `activesupport`'s `try` method by accepting a default value and dealing with block failures.
+
+More specifically, `attempt` tries to pass the receptor to a given block, returning an optional default value if either:
+
+* the receptor is `nil`
+* the block returns `nil`
+* the block fails
+
+```ruby
+# LICENSE_FILE is nil; block is not executed
+> ENV['LICENSE_FILE'].attempt { |it| File.read it }
+=> nil
+
+# Again, block is not executed, but a default value is provided
+> ENV['LICENSE_FILE'].attempt("No license") { |it| File.read it }
+=> "No license"
+
+# LICENSE_FILE points to an existing license file; block is executed and succeeds
+> ENV['LICENSE_FILE'] = 'LICENSE.txt'
+> ENV['LICENSE_FILE'].attempt { |it| File.read it }
+=> "The MIT License (MIT) ...\n"
+
+# LICENSE_FILE points to a non existing license file; block is executed and fails
+> ENV['LICENSE_FILE'] = 'foo'
+> ENV['LICENSE_FILE'].attempt { |it| File.read it }
+=> nil
+
+# Again, block is executed and fails, but this time a default value is provided
+> ENV['LICENSE_FILE'].attempt("No license") { |it| File.read it }
+=> "No license"
+```
+
 #### `captures`
 
 > Cherry-picking `require 'patch_adams/core/captures`
 
 TODO
+
+#### `defaulting`
+
+> Cherry-picking `require 'patch_adams/core/defaulting`
+
+`defaulting` just implements the idiom `maybe_nil || default` in a more-fluid message fashion, easier to chain in some contexts:
+
+```ruby
+> 4.defaulting(5)
+=> 4
+> nil.defaulting(5)
+=> 5
+```
 
 #### `like`
 
@@ -280,12 +330,6 @@ puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'
 => {:force=>true, :recursive=>true, :max_level=>4}
 ```
 
-#### `File#unlink`
-
-> Cherry-picking `require 'patch_adams/file/unlink`
-
-TODO
-
 #### `Hash#fix_missing`
 
 > Cherry-picking `require 'patch_adams/hash/fix_missing`
@@ -299,19 +343,41 @@ TODO
 
 #### `Hash#diff`
 
-> Cherry-picking `require 'patch_adams/hash/diff`
+> Cherry-picking `require 'patch_adams/core/hash/diff`
 
-TODO
+`diff` and `deep_diff` provide a way of comparing a hash, key by key. As name suggests, `diff` compute a shallow diff only based on receptor's key, while `deep_diff` computes
+this diff recursively for entries which contain arrays or hashes.
+
+```ruby
+> {}.diff({})
+=> {:deletions=>{}, :additions=>{}}
+> {foo: 1}.diff(bar: 2)
+=> {:deletions=>{:foo=>1}, :additions=>{:bar=>2}}
+> {foo: 1, bar: 2, baz: 7}.diff(bar: 2, foo: 1, bax: 3, foobar: 5)
+=> {:deletions=>{:baz=>7}, :additions=>{:bax=>3, :foobar=>5}}
+
+# deep_diff works also with nested hashes
+> {foo: {baz: 2}}.deep_diff({foo: {baz: 3}})
+=> {:deletions=>{:foo=>{:baz=>2}}, :additions=>{:foo=>{:baz=>3}}}
+> {foo: {bax: {kux: 4, bar: 9}, baz: 10}}.deep_diff({foo: {bax: {kux: 3, bar: 9}, baz: 10}})
+=> {:deletions=>{:foo=>{:bax=>{:kux=>4}}}, :additions=>{:foo=>{:bax=>{:kux=>3}}}}
+
+# deep_diff works with nested arrays too
+> {foo: [1, 2, 5]}.deep_diff({foo: [9, 10, 5, 6]})
+=> {:deletions=>{:foo=>[1, 2]}, :additions=>{:foo=>[9, 10, 6]}}
+> {foo: [{bar: 4, bax: 9}, 5]}.deep_diff({foo: [{bar: 5, bax: 9}, 5]})
+=> {:deletions=>{:foo=>[{:bar=>4}]}, :additions=>{:foo=>[{:bar=>5}]}}
+```
 
 #### `Hash#dig`
 
-> Cherry-picking `require 'patch_adams/hash/dig`
+> Cherry-picking `require 'patch_adams/core/hash/dig`
 
 TODO
 
 #### `Hash#indifference`
 
-> Cherry-picking `require 'patch_adams/hash/indifference`
+> Cherry-picking `require 'patch_adams/core/hash/indifference`
 
 indifferent_delete
 
@@ -319,58 +385,51 @@ TODO
 
 #### `Hash#replace_key`
 
-> Cherry-picking `require 'patch_adams/hash/replace_key`
+> Cherry-picking `require 'patch_adams/core/hash/replace_key`
 
 TODO
 
 #### `JSON#pretty_parse`
 
-> Cherry-picking `require 'patch_adams/json/pretty_parse`
+> Cherry-picking `require 'patch_adams/core/json/pretty_parse`
 
 TODO
 
 #### `Module#required`
 
-> Cherry-picking `require 'patch_adams/module/requried`
+> Cherry-picking `require 'patch_adams/core/module/requried`
 
 TODO
 
 #### `Module#revamp`
 
-> Cherry-picking `require 'patch_adams/module/revamp`
-
-TODO
-
-#### `Object#defaulting`
-
-> Cherry-picking `require 'patch_adams/object/defaulting`
+> Cherry-picking `require 'patch_adams/core/module/revamp`
 
 TODO
 
 #### `Object#ensure_present`
 
-> Cherry-picking `require 'patch_adams/object/ensure_present`
+> Cherry-picking `require 'patch_adams/core/object/ensure_present`
 
 TODO
 
 #### `Object#to_stringified_h`
 
-> Cherry-picking `require 'patch_adams/object/to_stringified_h`
+> Cherry-picking `require 'patch_adams/core/object/to_stringified_h`
 
 TODO
 
 #### `Regexp#matches`
 
-> Cherry-picking `require 'patch_adams/regexp/matches`
+> Cherry-picking `require 'patch_adams/core/regexp/matches`
 
 TODO
 
 #### `Yaml#load_interpolated`
 
-> Cherry-picking `require 'patch_adams/yaml/load_interpolated`
+> Cherry-picking `require 'patch_adams/core/yaml/load_interpolated`
 
 TODO
-
 
 ### ActiveModel
 
