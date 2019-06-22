@@ -112,6 +112,162 @@ require `patch_adams/minimal`
 require 'patch_adams/i18n/load_translations_path'
 ```
 
+## Available patches
+
+### Core
+
+#### `as_module_name`
+
+TODO
+
+#### `as_variable_name`
+
+TODO
+
+#### `captures`
+
+TODO
+
+#### `like`
+
+Don't you remember if a given object is a symbol, class or string? Are you dealing with a not-very-consistent-API? `like?` allows to perform loose comparisons between symbolic-like objects:
+
+```ruby
+> 'hello'.like? 'hello'
+=> true
+> 'hello'.like? :hello
+=> true
+
+> 5.like? '5'
+=> true
+> '5'.like? 5
+=> true
+
+> 'false'.like? false
+=> true
+> false.like? :false
+=> true
+
+> OpenStruct.like? :OpenStruct
+=> true
+> OpenStruct.like? 'OpenStruct'
+=> true
+> OpenStruct.like? :open_struct
+=> true
+
+> String.like? 'Symbol'
+=> false
+> 'false'.like? :hello
+=> false
+
+> String.like? 'string'
+=> true
+> String.like? 'symbol'
+=> false
+> Kernel.like? :kernel
+=> true
+```
+
+#### `status`
+
+TODO
+
+#### `to_struct`
+
+`struct` and `to_struct` are easy an convinient way of converting hashes into `OpenStruct`s:
+
+```ruby
+> {name: 'Mary', surname: 'Doe'}.to_struct
+=> #<OpenStruct name="Mary", surname="Doe">
+
+> struct name: 'Jon', surname: 'Doe'
+=> #<OpenStruct name="Jon", surname="Doe">
+```
+
+#### `Array#merge_numbers`
+
+TODO
+
+#### `Array#to_csv`
+
+TODO
+
+#### `Array#to_h`
+
+TODO
+
+#### `File#unlink`
+
+TODO
+
+#### `Hash#ammend`
+
+TODO
+
+#### `Hash#diff`
+
+TODO
+
+#### `Hash#dig`
+
+TODO
+
+#### `Hash#indifference`
+
+TODO
+
+#### `Hash#replace_key`
+
+TODO
+
+#### `JSON#pretty_parse`
+
+TODO
+
+#### `Module#required`
+
+TODO
+
+#### `Module#revamp`
+
+TODO
+
+#### `Object#defaulting`
+
+TODO
+
+#### `Object#ensure_present`
+
+TODO
+
+#### `Object#to_stringified_h`
+
+TODO
+
+#### `Regexp#matches`
+
+TODO
+
+#### `Yaml#load_interpolated`
+
+TODO
+
+
+### ActiveModel
+
+TODO
+
+### I18n
+
+TODO
+
+### Rack
+
+TODO
+
+### RSpec
+
+TODO
 
 ## Development
 
