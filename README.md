@@ -200,9 +200,14 @@ TODO
 
 TODO
 
-#### `Hash#ammend`
+#### `Hash#fix_missing`
 
-TODO
+`fix_missing` is like `merge` but withs arguments flipped. This means that, unlike `merge`, receptor's object entries take precedence over the given's one.
+
+```ruby
+> {recursive: true}.fix_missing(recursive: false, force: false)
+=> {:recursive=>true, :force=>false}
+```
 
 #### `Hash#diff`
 

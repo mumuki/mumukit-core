@@ -1,5 +1,5 @@
 class Hash
-  def amend(other)
+  def fix_missing(other)
     other.merge(self)
   end
 end
