@@ -190,7 +190,13 @@ TODO
 
 #### `Array#to_csv`
 
-TODO
+`Array#to_csv` converts an array of hashes into a CSV string.
+
+```ruby
+puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'}].to_csv
+1,Jon,Doe
+2,Mary,Doe
+```
 
 #### `Array#to_h`
 
@@ -210,7 +216,7 @@ TODO
 
 #### `Hash#fix_missing`
 
-`fix_missing` is like `merge` but withs arguments flipped. This means that, unlike `merge`, receptor's object entries take precedence over the given's one.
+`Hash#fix_missing` is like `merge` but withs arguments flipped. This means that, unlike `merge`, receptor's object entries take precedence over the given's one.
 
 ```ruby
 > {recursive: true}.fix_missing(recursive: false, force: false)
