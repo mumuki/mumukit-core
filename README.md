@@ -127,10 +127,40 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/mumuki
 
 Patches are declared in separate files, each one containing a single patch or a group of very-related patches. This is done in order to make them easy to mantain, find and include in your project selectively.
 
-* If you want to add a core patch that does not require any additional dependency, place it in `lib/core` directory.
-* If you want to add an extra patch that requires an additional dependency, place it top-level in `lib` directory
+* If you want to add a core patch that does not require any additional dependency, place it in `lib/patch_adams/core` directory.
+* If you want to add an extra patch that requires an additional dependency, place it top-level in `lib/patch_adams` directory
 
 Additionally, if your patch is specific to a class or module - most are - place you patch file within a directory named as the class or module. Otherwise - that is, the patch is polymorphic and applies to many classes - place it top-level.
+
+For example, if you want to add `a_great_method` to `hash`, place it here:
+
+```
+└── lib
+    └── patch_adams
+        └── core
+            └── hash
+                └── a_great_method.rb
+```
+
+`If you want to add `a_great_method` that is polymorphic to `nil`, booleans, strings and regular expressions, place it here:
+`
+```
+└── lib
+    └── patch_adams
+        └── core
+             └── a_great_method.rb
+```
+
+And if you want to add `a_great_method` to `AClass` of `a_well_known_library` , place it here:
+
+
+```
+└── lib
+    └── patch_adams
+        └── a_well_known_library
+            └── a_class
+                └── a_great_method.rb
+```
 
 ## License
 
