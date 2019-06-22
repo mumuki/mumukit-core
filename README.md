@@ -122,17 +122,25 @@ require 'patch_adams/i18n/load_translations_path'
 
 #### `as_module_name`
 
+> Cherry-picking `require 'patch_adams/core/as_module_name`
+
 TODO
 
 #### `as_variable_name`
+
+> Cherry-picking `require 'patch_adams/core/as_variable_name`
 
 TODO
 
 #### `captures`
 
+> Cherry-picking `require 'patch_adams/core/captures`
+
 TODO
 
 #### `like`
+
+> Cherry-picking `require 'patch_adams/core/like`
 
 Don't you remember if a given object is a symbol, class or string? Are you dealing with a not-very-consistent-API? `like?` allows to perform loose comparisons between symbolic-like objects:
 
@@ -174,6 +182,8 @@ Don't you remember if a given object is a symbol, class or string? Are you deali
 
 #### `status?`
 
+> Cherry-picking `require 'patch_adams/core/status`
+
 `PatchAdams.define_status` allows you to declare global status-like matchers for strings and symbols:
 
 ```ruby
@@ -199,6 +209,8 @@ PatchAdams.define_status :passed, :failed?
 
 #### `to_struct`
 
+> Cherry-picking `require 'patch_adams/core/to_struct`
+
 `struct` and `to_struct` are easy an convinient way of converting hashes into `OpenStruct`s:
 
 ```ruby
@@ -209,11 +221,42 @@ PatchAdams.define_status :passed, :failed?
 => #<OpenStruct name="Jon", surname="Doe">
 ```
 
-#### `Array#merge_numbers`
+#### `Array#assign_numbers!`
 
-TODO
+> Cherry-picking `require 'patch_adams/array/assign_numbers`
+
+`Array#assign_numbers!` assigns a number to each of the elements in the array, starting by `1`. By default the elements need to understand a `number=` message:
+
+```ruby
+class Team
+  attr_accessor :number
+end
+
+> 5.times.map { Team.new }.assign_numbers!
+=> [#<Team:0x0000562b389264b8 @number=1>, #<Team:0x0000562b38926490 @number=2>, #<Team:0x0000562b38926468 @number=3>, #<Team:0x0000562b38926440 @number=4>, #<Team:0x0000562b38926418 @number=5>]
+```
+
+You can change the initial number:
+
+```ruby
+> 5.times.map { Team.new }.assign_numbers! start_at: 10
+=> [#<Team:0x000055f2cd60b880 @number=10>, #<Team:0x000055f2cd60b858 @number=11>, #<Team:0x000055f2cd60b830 @number=12>, #<Team:0x000055f2cd60b808 @number=13>, #<Team:0x000055f2cd60b678 @number=14>]
+```
+
+And you can send an alternate selector:
+
+```ruby
+class Player
+  attr_accessor :position
+end
+
+> 3.times.map { Player.new }.assign_numbers! selector: :position
+=> [#<Player:0x000055f2cd978770 @position=1>, #<Player:0x000055f2cd978748 @position=2>, #<Player:0x000055f2cd978720 @position=3>]
+```
 
 #### `Array#to_csv`
+
+> Cherry-picking `require 'patch_adams/array/to_csv`
 
 `Array#to_csv` converts an array of hashes into a CSV string.
 
@@ -224,6 +267,8 @@ puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'
 ```
 
 #### `Array#to_h`
+
+> Cherry-picking `require 'patch_adams/array/to_h`
 
 `Array#to_h` converts an array of pairs into a hash:
 
@@ -237,9 +282,13 @@ puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'
 
 #### `File#unlink`
 
+> Cherry-picking `require 'patch_adams/file/unlink`
+
 TODO
 
 #### `Hash#fix_missing`
+
+> Cherry-picking `require 'patch_adams/hash/fix_missing`
 
 `Hash#fix_missing` is like `merge` but withs arguments flipped. This means that, unlike `merge`, receptor's object entries take precedence over the given's one.
 
@@ -250,49 +299,75 @@ TODO
 
 #### `Hash#diff`
 
+> Cherry-picking `require 'patch_adams/hash/diff`
+
 TODO
 
 #### `Hash#dig`
+
+> Cherry-picking `require 'patch_adams/hash/dig`
 
 TODO
 
 #### `Hash#indifference`
 
+> Cherry-picking `require 'patch_adams/hash/indifference`
+
+indifferent_delete
+
 TODO
 
 #### `Hash#replace_key`
+
+> Cherry-picking `require 'patch_adams/hash/replace_key`
 
 TODO
 
 #### `JSON#pretty_parse`
 
+> Cherry-picking `require 'patch_adams/json/pretty_parse`
+
 TODO
 
 #### `Module#required`
+
+> Cherry-picking `require 'patch_adams/module/requried`
 
 TODO
 
 #### `Module#revamp`
 
+> Cherry-picking `require 'patch_adams/module/revamp`
+
 TODO
 
 #### `Object#defaulting`
+
+> Cherry-picking `require 'patch_adams/object/defaulting`
 
 TODO
 
 #### `Object#ensure_present`
 
+> Cherry-picking `require 'patch_adams/object/ensure_present`
+
 TODO
 
 #### `Object#to_stringified_h`
+
+> Cherry-picking `require 'patch_adams/object/to_stringified_h`
 
 TODO
 
 #### `Regexp#matches`
 
+> Cherry-picking `require 'patch_adams/regexp/matches`
+
 TODO
 
 #### `Yaml#load_interpolated`
+
+> Cherry-picking `require 'patch_adams/yaml/load_interpolated`
 
 TODO
 

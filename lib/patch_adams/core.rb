@@ -1,6 +1,6 @@
 require_relative './minimal'
 
-require_relative './core/array/merge_numbers'
+require_relative './core/array/assign_numbers'
 require_relative './core/array/to_csv'
 require_relative './core/array/to_h'
 require_relative './core/file/unlink'
