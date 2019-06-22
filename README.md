@@ -194,7 +194,15 @@ TODO
 
 #### `Array#to_h`
 
-TODO
+`Array#to_h` converts an array of pairs into a hash:
+
+```ruby
+[].to_h
+=> {}
+
+[[:force, true], [:recursive, true], [:max_level, 4]].to_h
+=> {:force=>true, :recursive=>true, :max_level=>4}
+```
 
 #### `File#unlink`
 
