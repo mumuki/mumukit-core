@@ -3,9 +3,9 @@
 [![Test Coverage](https://codeclimate.com/github/mumuki/patch_adams/badges/coverage.svg)](https://codeclimate.com/github/mumuki/patch_adams)
 [![Issue Count](https://codeclimate.com/github/mumuki/patch_adams/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/patch_adams)
 
-# `patch_adams`
+# :clown_face: `patch_adams`
 
-> Ruby monkey patches to increase your code's health and your own happines
+> :monkey: Ruby monkey patches to increase your code's health and your own happines
 
 ## Installation
 
@@ -122,20 +122,20 @@ require 'patch_adams/i18n/load_translations_path'
 
 #### `as_module_name`
 
-> Cherry-picking `require 'patch_adams/core/as_module_name`
+> :cherries: Cherry-pick with `require 'patch_adams/core/as_module_name`
 
 TODO
 
 #### `as_variable_name`
 
-> Cherry-picking `require 'patch_adams/core/as_variable_name`
+> :cherries: Cherry-pick with `require 'patch_adams/core/as_variable_name`
 
 TODO
 
 
 #### `attempt`
 
-> Cherry-picking `require 'patch_adams/core/attempt`
+> :cherries: Cherry-pick with `require 'patch_adams/core/attempt`
 
 `attempt` generalizes `activesupport`'s `try` method by accepting a default value and dealing with block failures.
 
@@ -171,13 +171,13 @@ More specifically, `attempt` tries to pass the receptor to a given block, return
 
 #### `captures`
 
-> Cherry-picking `require 'patch_adams/core/captures`
+> :cherries: Cherry-pick with `require 'patch_adams/core/captures`
 
 TODO
 
 #### `defaulting`
 
-> Cherry-picking `require 'patch_adams/core/defaulting`
+> :cherries: Cherry-pick with `require 'patch_adams/core/defaulting`
 
 `defaulting` just implements the idiom `maybe_nil || default` in a more-fluid message fashion, easier to chain in some contexts:
 
@@ -190,7 +190,7 @@ TODO
 
 #### `like`
 
-> Cherry-picking `require 'patch_adams/core/like`
+> :cherries: Cherry-pick with `require 'patch_adams/core/like`
 
 Don't you remember if a given object is a symbol, class or string? Are you dealing with a not-very-consistent-API? `like?` allows to perform loose comparisons between symbolic-like objects:
 
@@ -232,7 +232,7 @@ Don't you remember if a given object is a symbol, class or string? Are you deali
 
 #### `status?`
 
-> Cherry-picking `require 'patch_adams/core/status`
+> :cherries: Cherry-pick with `require 'patch_adams/core/status`
 
 `PatchAdams.define_status` allows you to declare global status-like matchers for strings and symbols:
 
@@ -259,7 +259,7 @@ PatchAdams.define_status :passed, :failed?
 
 #### `to_struct`
 
-> Cherry-picking `require 'patch_adams/core/to_struct`
+> :cherries: Cherry-pick with `require 'patch_adams/core/to_struct`
 
 `struct` and `to_struct` are easy an convinient way of converting hashes into `OpenStruct`s:
 
@@ -273,7 +273,7 @@ PatchAdams.define_status :passed, :failed?
 
 #### `Array#assign_numbers!`
 
-> Cherry-picking `require 'patch_adams/array/assign_numbers`
+> :cherries: Cherry-pick with `require 'patch_adams/array/assign_numbers`
 
 `Array#assign_numbers!` assigns a number to each of the elements in the array, starting by `1`. By default the elements need to understand a `number=` message:
 
@@ -306,7 +306,7 @@ end
 
 #### `Array#to_csv`
 
-> Cherry-picking `require 'patch_adams/array/to_csv`
+> :cherries: Cherry-pick with `require 'patch_adams/array/to_csv`
 
 `Array#to_csv` converts an array of hashes into a CSV string.
 
@@ -318,7 +318,7 @@ puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'
 
 #### `Array#to_h`
 
-> Cherry-picking `require 'patch_adams/array/to_h`
+> :cherries: Cherry-pick with `require 'patch_adams/array/to_h`
 
 `Array#to_h` converts an array of pairs into a hash:
 
@@ -332,7 +332,7 @@ puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'
 
 #### `Hash#fix_missing`
 
-> Cherry-picking `require 'patch_adams/hash/fix_missing`
+> :cherries: Cherry-pick with `require 'patch_adams/hash/fix_missing`
 
 `Hash#fix_missing` is like `merge` but withs arguments flipped. This means that, unlike `merge`, receptor's object entries take precedence over the given's one.
 
@@ -343,7 +343,7 @@ puts [{id: 1, name: 'Jon', surname: 'Doe'}, {id: 2, name: 'Mary', surname: 'Doe'
 
 #### `Hash#diff`
 
-> Cherry-picking `require 'patch_adams/core/hash/diff`
+> :cherries: Cherry-pick with `require 'patch_adams/core/hash/diff`
 
 `diff` and `deep_diff` provide a way of comparing a hash, key by key. As name suggests, `diff` compute a shallow diff only based on receptor's key, while `deep_diff` computes
 this diff recursively for entries which contain arrays or hashes.
@@ -371,13 +371,13 @@ this diff recursively for entries which contain arrays or hashes.
 
 #### `Hash#dig`
 
-> Cherry-picking `require 'patch_adams/core/hash/dig`
+> :cherries: Cherry-pick with `require 'patch_adams/core/hash/dig`
 
 TODO
 
 #### `Hash#indifference`
 
-> Cherry-picking `require 'patch_adams/core/hash/indifference`
+> :cherries: Cherry-pick with `require 'patch_adams/core/hash/indifference`
 
 indifferent_delete
 
@@ -385,49 +385,49 @@ TODO
 
 #### `Hash#replace_key`
 
-> Cherry-picking `require 'patch_adams/core/hash/replace_key`
+> :cherries: Cherry-pick with `require 'patch_adams/core/hash/replace_key`
 
 TODO
 
 #### `JSON#pretty_parse`
 
-> Cherry-picking `require 'patch_adams/core/json/pretty_parse`
+> :cherries: Cherry-pick with `require 'patch_adams/core/json/pretty_parse`
 
 TODO
 
 #### `Module#required`
 
-> Cherry-picking `require 'patch_adams/core/module/requried`
+> :cherries: Cherry-pick with `require 'patch_adams/core/module/requried`
 
 TODO
 
 #### `Module#revamp`
 
-> Cherry-picking `require 'patch_adams/core/module/revamp`
+> :cherries: Cherry-pick with `require 'patch_adams/core/module/revamp`
 
 TODO
 
 #### `Object#ensure_present`
 
-> Cherry-picking `require 'patch_adams/core/object/ensure_present`
+> :cherries: Cherry-pick with `require 'patch_adams/core/object/ensure_present`
 
 TODO
 
 #### `Object#to_stringified_h`
 
-> Cherry-picking `require 'patch_adams/core/object/to_stringified_h`
+> :cherries: Cherry-pick with `require 'patch_adams/core/object/to_stringified_h`
 
 TODO
 
 #### `Regexp#matches`
 
-> Cherry-picking `require 'patch_adams/core/regexp/matches`
+> :cherries: Cherry-pick with `require 'patch_adams/core/regexp/matches`
 
 TODO
 
 #### `Yaml#load_interpolated`
 
-> Cherry-picking `require 'patch_adams/core/yaml/load_interpolated`
+> :cherries: Cherry-pick with `require 'patch_adams/core/yaml/load_interpolated`
 
 TODO
 
