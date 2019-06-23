@@ -1,7 +1,8 @@
 require 'codeclimate-test-reporter'
 SimpleCov.start
 
-require 'mumukit/core/rspec'
-require 'mumukit/core'
-require 'mumukit/core/request'
-require 'mumukit/core/activemodel'
+require 'patch_adams/rspec'
+require 'patch_adams/core'
+require 'patch_adams/rack'
+require 'patch_adams/i18n'
+require 'patch_adams/active_model'
