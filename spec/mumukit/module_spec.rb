@@ -53,8 +53,28 @@ class TestClass
   end
 end
 
-describe Module do
+module SomeModule
+  def foo
+  end
+end
 
+class SomeParentClass
+  def bar
+  end
+end
+
+class SomeChildClass < SomeParentClass
+  include SomeModule
+
+  def baz
+  end
+
+  def foobar
+    'something'
+  end
+end
+
+describe Module do
   describe '.required' do
     it { expect { TestClass.new.baz }.to raise_error 'You need to implement method baz' }
     it { expect { Object.new.extend(TestModule).foo }.to raise_error 'You need to implement method foo' }
@@ -79,5 +99,14 @@ describe Module do
 
     it { expect(object.a_number).to eq 11 }
     it { expect(object.another_number).to eq 21 }
+  end
+
+  describe '.rewrite' do
+    before { SomeChildClass.rewrite(:foobar) { 'something else' } }
+
+    it { expect { SomeChildClass.rewrite(:foo) {} }.to raise_error 'method foo was not previously defined here' }
+    it { expect { SomeChildClass.rewrite(:bar) {} }.to raise_error 'method bar was not previously defined here' }
+    it { expect { SomeChildClass.rewrite(:baz) {} }.to_not raise_error }
+    it { expect(SomeChildClass.new.foobar).to eq 'something else' }
   end
 end
