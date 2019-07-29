@@ -88,4 +88,9 @@ class Module
       this.instance_variable_get(attr_name) || this.instance_variable_set(attr_name, hyper.call)
     end
   end
+
+  def rewrite(selector, &block)
+    raise "method #{selector} was not previously defined here" unless method_defined?(selector)
+    define_method selector, &block
+  end
 end
