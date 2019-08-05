@@ -28,15 +28,15 @@ class Module
   # end
   # ```
   #
-  # `revamp` should be prefered to `patch` when more control or performance
+  # `revamp` should be preferred to `patch` when more control or performance
   # is required
   def revamp(*selectors, selector_transformer: nil, &block)
     selectors.each do |selector|
       method_proc = instance_method selector
-      selector_transfom = selector_transformer ? selector_transformer.call(selector) : selector
+      selector_transform = selector_transformer ? selector_transformer.call(selector) : selector
 
       define_method selector do |*args|
-        block.call(selector_transfom, self, *args, method_proc.bind(self))
+        block.call(selector_transform, self, *args, method_proc.bind(self))
       end
     end
   end
@@ -47,7 +47,7 @@ class Module
   #  * assumes a 0 arguments array
   #  * takes the accessor's original result instead of the `hyper` reference
   #
-  # As a consecuence, `revamp_accessor` can not alter the way and the moment
+  # As a consequence, `revamp_accessor` can not alter the way and the moment
   # the original method is evaluated.
   #
   # ```
