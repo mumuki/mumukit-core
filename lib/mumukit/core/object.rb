@@ -19,4 +19,8 @@ class Object
   def struct(hash = {})
     hash.to_struct
   end
+
+  def name_me?
+    self == false || present?
+  end
 end
