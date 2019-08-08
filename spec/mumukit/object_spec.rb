@@ -52,13 +52,13 @@ describe Object do
     it { expect(Mumukit::Core.as_module).to eq Mumukit::Core }
   end
 
-  describe '#name_me?' do
-    it { expect(''.name_me?).to be false }
-    it { expect('something'.name_me?).to be true }
-    it { expect([].name_me?).to be false }
-    it { expect([123].name_me?).to be true }
-    it { expect(nil.name_me?).to be false }
-    it { expect(false.name_me?).to be true }
-    it { expect(123.name_me?).to be true }
+  describe '#filled?' do
+    it { expect(''.filled?).to be false }
+    it { expect('something'.filled?).to be true }
+    it { expect([].filled?).to be false }
+    it { expect([123].filled?).to be true }
+    it { expect(nil.filled?).to be false }
+    it { expect(false.filled?).to be true }
+    it { expect(123.filled?).to be true }
   end
 end

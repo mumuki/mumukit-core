@@ -20,7 +20,7 @@ class Object
     hash.to_struct
   end
 
-  def name_me?
+  def filled?
     self == false || present?
   end
 end
