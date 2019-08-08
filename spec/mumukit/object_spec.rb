@@ -51,4 +51,14 @@ describe Object do
     it { expect('mumukit/core'.as_module).to eq Mumukit::Core }
     it { expect(Mumukit::Core.as_module).to eq Mumukit::Core }
   end
+
+  describe '#name_me?' do
+    it { expect(''.name_me?).to be false }
+    it { expect('something'.name_me?).to be true }
+    it { expect([].name_me?).to be false }
+    it { expect([123].name_me?).to be true }
+    it { expect(nil.name_me?).to be false }
+    it { expect(false.name_me?).to be true }
+    it { expect(123.name_me?).to be true }
+  end
 end
