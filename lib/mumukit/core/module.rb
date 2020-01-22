@@ -113,6 +113,6 @@ class Module
   end
 
   def contract_breaches
-    full_contract.select { |it| !method_defined? it }
+    full_contract.reject { |it| method_defined? it }
   end
 end
