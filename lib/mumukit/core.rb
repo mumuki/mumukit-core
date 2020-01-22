@@ -9,6 +9,7 @@ end
 require_relative './core/status'
 require_relative './core/object'
 require_relative './core/module'
+require_relative './core/class'
 require_relative './core/json'
 require_relative './core/hash'
 require_relative './core/string'
