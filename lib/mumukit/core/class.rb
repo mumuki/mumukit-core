@@ -3,11 +3,11 @@ class Class
   end
 
   unless %w(RACK_ENV RAILS_ENV).any? { |it| ENV[it] == 'production' }
-    alias_method :__new__, :new
+    alias_method :__mumukit_core_contract_new__, :new
 
     def new(*args, &block)
       validate_upholds_contract!
-      __new__(*args, &block)
+      __mumukit_core_contract_new__(*args, &block)
     end
   end
 
