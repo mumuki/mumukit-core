@@ -6,12 +6,12 @@ class Class
     alias_method :__mumukit_core_contract_new__, :new
 
     def new(*args, &block)
-      validate_upholds_contract!
+      validate_complies_with_contract!
       __mumukit_core_contract_new__(*args, &block)
     end
   end
 
-  def validate_upholds_contract!
+  def validate_complies_with_contract!
     raise ContractBreachError.new "class #{name} does not implement contract #{contract_breaches}!" if breaches_contract?
   end
 end
