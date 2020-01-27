@@ -3,8 +3,19 @@ require 'active_support/all'
 
 module Mumukit
   module Core
+    class << self
+      def test_mode!
+        Class.alias_method :__mumukit_core_contract_new__, :new
+        Class.send :define_method, :new do |*args, &block|
+          validate_complies_with_contract!
+          __mumukit_core_contract_new__(*args, &block)
+        end
+      end
+    end
   end
 end
+
+Mumukit::Core.test_mode! unless %w(RACK_ENV RAILS_ENV).any? { |it| ENV[it] == 'production' }
 
 require_relative './core/status'
 require_relative './core/object'
