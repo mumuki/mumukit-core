@@ -18,7 +18,7 @@ module Mumukit
   end
 end
 
-Mumukit::Core.test_mode! unless %w(RACK_ENV RAILS_ENV).any? { |it| ENV[it] == 'production' }
+Mumukit::Core.test_mode! if %w(RACK_ENV RAILS_ENV).any? { |it| ENV[it] == 'test' }
 
 require_relative './core/status'
 require_relative './core/object'
