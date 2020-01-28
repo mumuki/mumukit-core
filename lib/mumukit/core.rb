@@ -5,10 +5,13 @@ module Mumukit
   module Core
     class << self
       def test_mode!
-        Class.alias_method :__mumukit_core_contract_new__, :new
-        Class.send :define_method, :new do |*args, &block|
-          validate_complies_with_contract!
-          __mumukit_core_contract_new__(*args, &block)
+        Class.class_eval do
+          alias_method :__mumukit_core_contract_new__, :new
+
+          def new(*args, &block)
+            validate_complies_with_contract!
+            __mumukit_core_contract_new__(*args, &block)
+          end
         end
       end
     end
