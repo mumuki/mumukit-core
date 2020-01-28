@@ -93,4 +93,26 @@ class Module
     raise "method #{selector} was not previously defined here" unless method_defined?(selector)
     define_method selector, &block
   end
+
+  def contract
+    @contract ||= []
+  end
+
+  attr_writer :contract
+
+  def implements(*selectors)
+    self.contract += selectors
+  end
+
+  def full_contract
+    ancestors.flat_map(&:contract).uniq
+  end
+
+  def breaches_contract?
+    !contract_breaches.empty?
+  end
+
+  def contract_breaches
+    full_contract.reject { |it| method_defined? it }
+  end
 end
