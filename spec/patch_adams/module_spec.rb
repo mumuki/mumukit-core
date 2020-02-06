@@ -106,10 +106,10 @@ describe Module do
   describe '.rewrite' do
     before { TestChildClass.rewrite(:foobar) { 'something else' } }
 
-    it { expect { TestChildClass.rewrite(:foo) {} }.to_not raise_error 'method foo was not previously defined here' }
-    it { expect { TestChildClass.rewrite(:bar) {} }.to_not raise_error 'method bar was not previously defined here' }
+    it { expect { TestChildClass.rewrite(:foo) {} }.to_not raise_error }
+    it { expect { TestChildClass.rewrite(:bar) {} }.to_not raise_error }
     it { expect { TestChildClass.rewrite(:baz) {} }.to_not raise_error }
-    it { expect { TestChildClass.rewrite(:foobaz) {} }.to raise_error }
+    it { expect { TestChildClass.rewrite(:foobaz) {} }.to raise_error 'method foobaz was not previously defined here' }
     it { expect(TestChildClass.new.foobar).to eq 'something else' }
   end
 end
