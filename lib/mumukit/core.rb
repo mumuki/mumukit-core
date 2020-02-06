@@ -6,11 +6,22 @@ module Mumukit
     class << self
       def test_mode!
         Class.class_eval do
-          alias_method :__mumukit_core_contract_new__, :new
+          unless defined? __mumukit_core_contract_new__
+            alias_method :__mumukit_core_contract_new__, :new
 
-          def new(*args, &block)
-            validate_complies_with_contract!
-            __mumukit_core_contract_new__(*args, &block)
+            def new(*args, &block)
+              validate_complies_with_contract!
+              __mumukit_core_contract_new__(*args, &block)
+            end
+          end
+        end
+      end
+
+      def production_mode!
+        Class.class_eval do
+          if defined? __mumukit_core_contract_new__
+            alias_method :new, :__mumukit_core_contract_new__
+            undef_method :__mumukit_core_contract_new__
           end
         end
       end

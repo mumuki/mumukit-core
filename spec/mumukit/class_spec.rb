@@ -1,25 +1,26 @@
 require 'spec_helper'
 
 describe Class do
-  describe '.implements' do
-    let(:some_class) { Class.new { implements :foo } }
-    let(:some_module) { Module.new { implements :bar } }
+  describe '.required' do
+    let(:some_class) { Class.new { required :foo } }
+    let(:some_module) { Module.new { required :bar } }
 
     context 'when test mode is not activated' do
-      context 'when class declares it implements contract but breaches it' do
+      context 'when class declares requires method but breaches it' do
         it { expect { some_class.new }.to_not raise_error }
       end
     end
 
     context 'when test mode is activated' do
       before(:all) { Mumukit::Core.test_mode! }
+      after(:all) { Mumukit::Core.production_mode! }
 
-      context 'when class declares it implements contract but breaches it' do
+      context 'when class declares requires method but breaches it' do
         it { expect { some_class.new }.to raise_error Class::ContractBreachError }
         it { expect(some_class.contract_breaches).to eq %i(foo) }
       end
 
-      context 'when class declares it implements contract and upholds it' do
+      context 'when class declares requires method and upholds it' do
         before { some_class.define_method(:foo) {} }
 
         it { expect { some_class.new }.to_not raise_error }
