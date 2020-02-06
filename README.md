@@ -418,6 +418,12 @@ TODO
 
 TODO
 
+#### `Object#filled?`
+
+> :cherries: Cherry-pick with `require 'patch_adams/core/object/filled`
+
+TODO
+
 #### `Object#to_stringified_h`
 
 > :cherries: Cherry-pick with `require 'patch_adams/core/object/to_stringified_h`
