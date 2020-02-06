@@ -1,6 +1,28 @@
 require_relative '../spec_helper'
 
+
 module TestModule
+  def foo
+  end
+end
+
+class TestParentClass
+  def bar
+  end
+end
+
+class TestChildClass < TestParentClass
+  include TestModule
+
+  def baz
+  end
+
+  def foobar
+    'something'
+  end
+end
+
+module TestModuleWithRequirements
   required :foo
 end
 
@@ -57,7 +79,7 @@ describe Module do
 
   describe '.required' do
     it { expect { TestClass.new.baz }.to raise_error 'You need to implement method baz' }
-    it { expect { Object.new.extend(TestModule).foo }.to raise_error 'You need to implement method foo' }
+    it { expect { Object.new.extend(TestModuleWithRequirements).foo }.to raise_error 'You need to implement method foo' }
   end
 
   describe '.patch' do
@@ -79,5 +101,15 @@ describe Module do
 
     it { expect(object.a_number).to eq 11 }
     it { expect(object.another_number).to eq 21 }
+  end
+
+  describe '.rewrite' do
+    before { TestChildClass.rewrite(:foobar) { 'something else' } }
+
+    it { expect { TestChildClass.rewrite(:foo) {} }.to_not raise_error 'method foo was not previously defined here' }
+    it { expect { TestChildClass.rewrite(:bar) {} }.to_not raise_error 'method bar was not previously defined here' }
+    it { expect { TestChildClass.rewrite(:baz) {} }.to_not raise_error }
+    it { expect { TestChildClass.rewrite(:foobaz) {} }.to raise_error }
+    it { expect(TestChildClass.new.foobar).to eq 'something else' }
   end
 end

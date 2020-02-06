@@ -397,7 +397,7 @@ TODO
 
 #### `Module#required`
 
-> :cherries: Cherry-pick with `require 'patch_adams/core/module/requried`
+> :cherries: Cherry-pick with `require 'patch_adams/core/module/required`
 
 TODO
 
@@ -406,6 +406,11 @@ TODO
 > :cherries: Cherry-pick with `require 'patch_adams/core/module/revamp`
 
 TODO
+
+#### `Module#rewrite`
+
+> :cherries: Cherry-pick with `require 'patch_adams/core/module/rewrite`
+
 
 #### `Object#ensure_present`
 
