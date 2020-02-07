@@ -3,6 +3,36 @@ require 'active_support/all'
 
 module Mumukit
   module Core
+    module Env
+      def self.value
+        values.tap { |it| raise 'inconsistent env' if it.size > 1 }.first
+      end
+
+      def self.values
+        @values ||= variables.map { |it| ENV[it] }.compact.uniq
+      end
+
+      def self.variables
+        @variables ||= %w(RACK_ENV RAILS_ENV)
+      end
+
+      def self.reset!
+        @variables = nil
+      end
+
+      def self.test?
+        value == 'test'
+      end
+
+      def self.production?
+        value == 'production'
+      end
+    end
+  end
+end
+
+module Mumukit
+  module Core
     class << self
       def test_mode!
         Class.class_eval do
