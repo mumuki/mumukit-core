@@ -1,6 +1,8 @@
 sudo: false
 language: ruby
-env: RACK_ENV=development
+env:
+  - RACK_ENV=development
+  - RAILS_ENV=development
 rvm:
 - 2.6.3
 after_success:
