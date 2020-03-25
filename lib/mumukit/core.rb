@@ -6,6 +6,7 @@ module Mumukit
     class << self
       def test_mode!
         Class.class_eval do
+          break if method_defined? :__mumukit_core_contract_new__
           alias_method :__mumukit_core_contract_new__, :new
 
           def new(*args, &block)
