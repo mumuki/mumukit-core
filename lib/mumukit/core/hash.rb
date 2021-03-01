@@ -34,6 +34,12 @@ class Hash
     OpenStruct.new self
   end
 
+  def to_deep_struct
+    each_with_object({}) do |(key, val), memo|
+      memo[key] = (val.is_a?(Hash) || val.is_a?(Array)) ? val.to_deep_struct : val
+    end.to_struct
+  end
+
   def amend(other)
     other.merge(self)
   end
