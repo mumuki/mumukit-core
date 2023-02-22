@@ -1,5 +1,4 @@
-require 'codeclimate-test-reporter'
-SimpleCov.start
+Warning[:deprecated] = true
 
 require 'mumukit/core/rspec'
 require 'mumukit/core'
