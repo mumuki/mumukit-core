@@ -7,7 +7,7 @@ class Array
     end
   end
 
-  def to_csv
+  def generate_csv
     CSV.generate do |csv|
       each { |hash| csv << hash.values }
     end
